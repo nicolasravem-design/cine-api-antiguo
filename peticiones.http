@@ -1,0 +1,39 @@
+### Ver las rutas disponibles
+GET http://localhost:3000/
+
+### PUNTO 1 - Crear un usuario basico
+POST http://localhost:3000/usuarios/registro
+Content-Type: application/json
+
+{ "username": "juan", "password": "juan123", "rol": "basico" }
+
+### PUNTO 1 - Iniciar sesion (copiar el token que devuelve)
+POST http://localhost:3000/usuarios/login
+Content-Type: application/json
+
+{ "username": "admin", "password": "admin123" }
+
+### PUNTO 1 - Ver la informacion del usuario que inicio sesion
+GET http://localhost:3000/usuarios/perfil
+Authorization: Bearer PEGAR_TOKEN_AQUI
+
+### PUNTO 2 - Crear una pelicula (solo administrador)
+POST http://localhost:3000/peliculas
+Authorization: Bearer PEGAR_TOKEN_DEL_ADMIN_AQUI
+Content-Type: application/json
+
+{
+  "titulo": "Interstellar",
+  "director": "Christopher Nolan",
+  "anioLanzamiento": 2014,
+  "productora": "Paramount",
+  "precio": 35000
+}
+
+### PUNTO 3 - Ver todas las peliculas
+GET http://localhost:3000/peliculas
+Authorization: Bearer PEGAR_TOKEN_AQUI
+
+### PUNTO 4 - Buscar por anio mayor a 2000 y precio menor o igual a 45000
+GET http://localhost:3000/peliculas/buscar?anio=2000&precio=45000
+Authorization: Bearer PEGAR_TOKEN_AQUI
